@@ -1,4 +1,4 @@
-# **LAB 0**
+# LAB 0
 ## Mục đích
 Sử dụng kết hợp GitHub và PlantText để viết tài liệu thiết kế phần mềm.
 
