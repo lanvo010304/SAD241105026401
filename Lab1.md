@@ -43,6 +43,10 @@ Phân tích ca sử dụng hệ thống "**Payroll System**".
       d) Hiệu năng tốt:
       * Cache ở nhiều tầng.
       * Tối ưu truy cập database.
+
+
+    * **Biểu đồ**:
+
       
      
      
