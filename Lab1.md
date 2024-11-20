@@ -76,5 +76,60 @@ Phân tích ca sử dụng hệ thống "**Payroll System**".
     * Rollback khi gặp lỗi.
 
   3) Tiền hành **phân tích 02 ca sử dụng**: *Select Payment và Maintain Timecard.*:
-    * Các lớp phân tích cho Select Payment:
-      
+
+  * **Select Payment**:
+    
+     a) Phân tích các lớp:
+
+       ![Diagram](https://www.planttext.com/api/plantuml/png/b9EnQiCm48PtFyNXgHto0XrAXa0xfA6bVW7LCPQf8eT4BWqbG-cGeHJQeNjCo52eQQ2TB4871R-7dg2lq9E7s2GH8He4ulxJ_P_kz2T_cqD11YBfCQTF_5iI1k2UHII6RgJbXBlmu00kdv7X4DmBDUL0rIUd82WnUwpIjQXS5FEUk4UrVFQe-k6X5-49jPwH7XrNIXyrB_oI5eiYHHcUFlpTodkL-Xsgyspxfh4pTYhddT2Kd_JXJilvXlUhHESp3amjRTuRFJMh2fp0jHX4FAp2F5JJKLtG8YAemcAWyn94fT5MCWWCnXOyBREsMbfU2R7x9RpmQWNM-7N4S_LDOFLMR6EPoEgrs4Kbj7mtNTBoqI35oGqBDfcDzmDnLOOmjQiFOQgtjANb5p3JrMIZeUrYaG2wmBXj61bAzZ_hJW7J-Nnad-3IfFK_D1gdre5ph9DOPjLwk4TfuNUQ0U_YV_u7003__mC0)
+
+     b) Mô tả các hành vi:
+
+       ![Diagram](https://www.planttext.com/api/plantuml/png/d5HDIyD05BpdLpnwRx3MxqCfUEcX2e87FQvfI1RRRKmtnHx5etZmB895H1IB1RsO83siv7_iB_0l-BRfjabJHRpaD3DlthpPV4MZQeSJdmUjfa4itlQXiEl4GndTK6Y8T-OKW7GWwDY-uI6CMjGZZ4DXHzmoSCKpSu6xH7tReiyICCr2zm8PtZ5eYeySr2Ezbiru5byJhmG-h-89Xh9kcrfs5bEFXm5mNqOlESqEBa4Ssp2KQIXMq0ziGSc4G_4KW2N3Xo3DKLlJBk6sycqW5XaJMqXRDc5VXlrscW4j6LtJ6KylOMWQAanCeqBPXBeCxtke8DwO0vogtFI6CnMzfcOMCpvMq8UFCK9NHcSfAQDXvnHcFlJogoRKg8pE6J9bT96saauYfJNTAHFYcWdRA739m7FZ8TftneAF5dJ5BPoAlWNCbU60vODSD-50HeFv5lmrnGsSZC9Uei_LwSDalEZJV-IvYNPcTbKhfjg_HrhH_LATMiBRZekuEC-fZAwafcQzb4fPCqsKJ9kO5ZftrvAgPpBxI619ZsKuud2YtjlYOzA4gswAxF9SBNwWuxkesgo1VuXl0000__y30000)
+
+     c) Nhiệm vụ:
+        1) Lớp giao diện:
+           **Màn hình thanh toán:**
+             - Hiển thị thông tin thanh toán cho người dùng.
+             - Cho phép chọn phương thức thanh toán.  
+             - Thu thập thông tin xác nhận từ người dùng.
+
+        3) Lớp nghiệp vụ:
+    
+            **Quản lý thanh toán:**
+              - Tạo mới giao dịch thanh toán.
+              - Xử lý logic thanh toán.
+              - Kiểm tra tính hợp lệ của thanh toán.
+              - Cập nhật trạng thái thanh toán.
+     
+            **Hóa đơn:**
+              - Quản lý thông tin hóa đơn.
+              - Tính toán tổng tiền.
+              - Theo dõi trạng thái hóa đơn.
+        4) Lớp dữ liệu:
+             **Lưu trữ thanh toán**:
+                - Lưu trữ thông tin thanh toán.
+                - Cập nhật dữ liệu thanh toán.
+                - Truy xuất thông tin thanh toán.
+
+     d) Các quan hệ:
+      - Màn hình thanh toán -> Quản lý thanh toán: Quan hệ sử dụng.
+      - Quản lý thanh toán -> Hóa đơn: Quan hệ kết hợp.
+      - Quản lý thanh toán -> Lưu trữ thanh toán: Quan hệ sử dụng.
+
+     e) Giải thích luồng xử lý:
+
+       Người dùng bắt đầu thanh toán -> Hệ thống tạo giao dịch thanh toán mới
+       -> Lấy và hiển thị thông tin hóa đơn -> Người dùng chọn phương thức và xác nhận
+       -> Hệ thống xử lý thanh toán -> Cập nhật trạng thái hóa đơn -> Lưu thông tin và hiển thị kết quả
+               
+   * **Maintain Timecard**:
+     
+     a) Phân tích các lớp:
+       ![Diagram]()
+
+
+
+
+
+    
