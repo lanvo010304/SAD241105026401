@@ -77,25 +77,70 @@ Phân tích ca sử dụng hệ thống "**Payroll System**".
 
   3) Tiền hành **phân tích 02 ca sử dụng**: *Select Payment và Maintain Timecard*:
 
-    3.1 **Select Payment**:
-  
-    a) Phân tích các lớp:
-    - SinhVien: Đại diện cho sinh viên chưa các thông tin cá nhân và khóa học đã đăng ký.
-    - ThanhToan: Chịu trách nhiệm xử lý các yêu cầu thanh toán.
-    - HoaDon: Quán lý hóa đơn và thanh toán.
-  
-    b) Biểu đồ:
-  
-  ![Diagram](https://www.planttext.com/api/plantuml/png/UhzxlqDnIM9HIMbk3bTYSab-aK9mPbv6M6Pg7bS1K3WpERCWCQz4GSdbuUxkv0o5ieUxbog4P2JcPIY4v1zUcAUaa5Yi491OcPkQLnASMbIMcPoAgi_ZuUvsXPACXxidvgKhU1pUdAXmPC8ng3wdp9oSpBpquChYajHSBYwOnGgwTcX6MYb47bvLgf3ySDVoKeMImpih5PA19lRc0Gq6kQG4v18kL2qWGr3CjrBmURXhQILExIYAiJaXfEZXhiMW06WamGamFrafU6G-tDsS1mwARfm6EAJcfG1Z0W000F__0m00)
-
+      3.1 **Select Payment**:
       
-    
+      a) Phân tích các lớp:
+      - SinhVien: Đại diện cho sinh viên chưa các thông tin cá nhân và khóa học đã đăng ký.
+      - ThanhToan: Chịu trách nhiệm xử lý các yêu cầu thanh toán.
+      - HoaDon: Quán lý hóa đơn và thanh toán.
+      
+      b) Biểu đồ:
      
-               
-   * **Maintain Timecard**:
+     ![Diagram](https://www.planttext.com/api/plantuml/png/UhzxlqDnIM9HIMbk3bTYSab-aK9mPbv6M6Pg7bS1K3WpERCWCQz4GSdbuUxkv0o5ieUxbog4P2JcPIY4v1zUcAUaa5Yi491OcPkQLnASMbIMcPoAgi_ZuUvsXPACXxidvgKhU1pUdAXmPC8ng3wdp9oSpBpquChYajHSBYwOnGgwTcX6MYb47bvLgf3ySDVoKeMImpih5PA19lRc0Gq6kQG4v18kL2qWGr3CjrBmURXhQILExIYAiJaXfEZXhiMW06WamGamFrafU6G-tDsS1mwARfm6EAJcfG1Z0W000F__0m00)
+
+     c) Nhiệm vụ:
+     - Sinh viên: Gửi yêu cầu chọn phương thức thanh toán.
+     - Dịch vụ Thanh Toán: Xử lý và trả về các tùy chọn thanh toán.
+     - Hệ thống Hóa Đơn: Cung cấp các thông tin thanh toán cần thiết.
+
+     d) Thuộc tính và quan hệ:
+     
+     **SinhVien**:
+       - Thuộc tính: studentID, name, registeredCourses.
+       - Quan hệ: Một SinhVien có thể có nhiều HoaDon (1:N với HoaDon).
+
+     **ThanhToan**:
+       - Thuộc tính: paymentMethods, processPayment().
+       - Quan hệ:ThanhToan tương tác với HoaDon để lấy thông tin thanh toán (N:1).
+
+     **HoaDon**:
+       - Thuộc tính: billID, amount, dueDate.
+       - Quan hệ:
+         + Một HoaDon thuộc về một SinhVien (N:1).
+         + HoaDon cung cấp thông tin cho ThanhToan (1:N).
+                 
+ 
+     3.2) **Maintain Timecard**:
      
      a) Phân tích các lớp:
-       ![Diagram]()
+       - GV: Đại diện cho giảng viên, có thông tin cá nhân và khóa học giảng dạy.
+       - Time: Chịu trách nhiệm quản lý và duy trì thẻ thời gian.
+       - Data: Lưu trữ thông tin thẻ thời gian.
+
+     b) Biểu đồ:
+     
+       ![Diagram](https://www.planttext.com/api/plantuml/png/V90n2i8m58RtdEB7tGjq4C621r14nsSCRK1ZQLEluE0PH3k881GN9pCu1Bn7Jk0LJ2iA5d5vG_A-__zu3tFhPffIdI_cZBXUfkXBKj582iKI_owvJ4Xfj49dDZp6ofa3Xh6xccgQhQptMw0CGxaGdDBPGAGhoSKtthiNo9pPmUUSCPVEhFEQ2adJb3B1sASOxKupBC34dd9mTptMiqoWl4IfeMiN_NA9V0Hhe5NQkoH0xp_xNlofCBO5Vw4_Ipx-WJ-DlQW8KriicxPshsBmwfjrXPhvkpy1003__mC0)
+
+     c) Nhiệm vụ:
+       - GV: Gửi yêu cầu cập nhật thẻ thời gian.
+       - Time: Xử lý yêu cầu và cập nhật thông tin.
+       - Data: Lưu trữ và quản lý thông tin thẻ thời gian.
+
+     d) Thuộc tính và quan hệ:
+     
+     **GV**:
+       - Thuộc tính: professorID, name, coursesTaught.
+       - Quan hệ: Một GV có thể có nhiều Time (1:N với Time).
+
+     **Time**:
+       - Thuộc tính: timecardID, updateTimecard().
+       - Quan hệ: Time tương tác với Data để cập nhật thông tin (N:1).
+
+     **Data**:
+       - Thuộc tính: recordID, timecardData.
+       - Quan hệ:
+         + Một bản ghi trong Data thuộc vềTime (1:1).
+         + Data cung cấp thông tin cho Time (1:N).
 
 
 
