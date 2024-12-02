@@ -4,135 +4,99 @@
 Phân tích ca sử dụng hệ thống "**Payroll System**".
 
 ## Thực hiện:
-1) Phân tích yêu cầu để **đề xuất kiến trúc phù hợp** cho bài toán, giải thích:
-   * **Đề xuất**:
-     Multi-tier Architecture (Kiến trúc nhiều tầng):
-     
-     Các thành phần gồm:
-     
-     a) Presentation Layer (Tầng trình bày):
-        * User Interface: Giao diện người dùng cho sinh viên và giảng viên.
-        * API Gateway: Quản lý và điều hướng các request từ client.
-          
-     b) Business Layer (Tầng nghiệp vụ):
-       * Services: Xử lý các yêu cầu nghiệp vụ chính như đăng ký môn học, nhập điểm.
-       * Business Logic: Chứa logic nghiệp vụ và các quy tắc.
-       * Security: Quản lý xác thực và phân quyền.
+1) Phân tích kiến trúc:
 
-     c) Data Access Layer (Tầng truy cập dữ liệu):
-       * New Database: Lưu trữ dữ liệu mới (đăng ký, điểm số).
-       * Legacy Course Catalog: Database cũ chứa thông tin khóa học.
-  
-    * **Lý do**:
-
-      a)Phù hợp với yêu cầu tích hợp hệ thống cũ:
-      * Tách biệt xử lý.
-      * Dễ dàng chuyển đổi dần dần từ hệ thống cũ sang mới.
-      * Cache và tối ưu truy cập database cũ.
-     
-      b)Đảm bảo bảo mật cao:
-      * Kiểm soát truy cập ở nhiều lớp.
-      * Bảo vệ thông tin nhạy cảm (điểm số).
-      * Dễ dàng thêm các cơ chế bảo mật mới.
-
-      c)Khả năng mở rộng và bảo trì tốt:
-      * Các tầng độc lập, dễ nâng cấp từng phần.
-      * Có thể scale riêng từng tầng khi cần.
-      * Giảm sự phụ thuộc giữa các thành phần.
-     
-      d) Hiệu năng tốt:
-      * Cache ở nhiều tầng.
-      * Tối ưu truy cập database.
-
-
-    * **Biểu đồ**:
-
-   ![Diagram](https://www.planttext.com/api/plantuml/png/X5H1IiD05Dtd59-kxHMase88NGXs9rrC9p4PsangEwaMSTL55oBOXIiHAoAYA0gwiOEucEezvWHUmJzDgObDOXP3vh_tt_lp6EPRVfIwWdH4wBSigqreaxWE56fwSijT41trm3reg76_08SMuBUpmKW0DjDoo86xNyzQNZ2mrHjtwn6XhEKPzgvjRTQjesLDxdgckGqzBMyMgXKjZwatgyrbge7BQ98zHzRrv3e0NqyUHQg3w8Hze0YtmTRo2Lf68LnOrLBXkNPDFU8OdfRNRRCEGU0wGb7wUJSpiuaW3TBzTQDVLz3LyZBLgxnTgUAayfpLOmMROAXOlQ7GzDGBCKudT66H5p4KYwl9YEER24racTX5U6goARn4pgbT4IyhqBoMt9Yp5EU7ZsMQBnJZvqLkyK0uq66k9o3O_U-6nz5zfm7K2w3BKBt7r3r7Ga-DmMMO7KuHrHnkW_5OSlfpwwUdqm4sDTKx-EgLHpEk8B0N6Zbe8J0TeVN0DrTkPA03nyyuNBPjVle0SRndWawma92TPioqXB_uglm0003__mC0)
-     
-     
-2) Phân tích yêu cầu để **đề xuất các cơ chế** (phân tích) cần giải quyết trong bài toán:
+   a) **Đề xuất**:
    
-    a) Cơ chế xác thực và phân quyền:
-    * Quản lý đăng nhập người dùng.
-    * Phân quyền truy cập cho sinh viên/giảng viên.
-    * Bảo vệ thông tin nhạy cảm (điểm số).
+     - Multi-tier Architecture (Kiến trúc nhiều tầng- Cụ thể em dùng 3 tầng):
+     
+     - Các thành phần gồm:
+       - Presentation Layer (Tầng trình bày): Giao diện mà người dùng tương tác với hệ thống.
+       - Business Layer (Tầng nghiệp vụ): Chứa các quy tắc và logic xử lý của hệ thống.
+       - Data Access Layer (Tầng truy cập dữ liệu): Lưu trữ và truy xuất dữ liệu từ cơ sở dữ liệu.
+  
+    b) **Lý do**:
+      - Tách biệt rõ ràng: Giúp dễ dàng bảo trì và mở rộng hệ thống.
+      - Khả năng mở rộng: Mỗi lớp có thể được mở rộng độc lập mà không ảnh hưởng đến các lớp khác.
+      - Bảo mật: Dữ liệu nhạy cảm được bảo vệ tốt hơn khi có sự phân chia rõ ràng giữa các lớp.
 
-    b) Cơ chế tích hợp hệ thống:
-  
-    * Kết nối với CSDL danh mục khóa học cũ.
-    * Cache dữ liệu để tối ưu hiệu năng.
-    * Đồng bộ dữ liệu giữa 2 hệ thống.
-  
-    c) Cơ chế thông báo:
-  
-    * Thông báo khi lớp đầy.
-    * Thông báo khi lớp bị hủy (dưới 10 sinh viên).
-    * Thông báo cập nhật thời khóa biểu.
-  
-    d) Cơ chế xử lý giao dịch:
-  
-    * Đảm bảo tính nhất quán khi đăng ký.
-    * Xử lý đồng thời nhiều yêu cầu đăng ký.
-    * Rollback khi gặp lỗi.
+    c) **Ý nghĩa**:
+      - Giao diện người dùng: Cung cấp một trải nghiệm người dùng thân thiện.
+      - Xử lý nghiệp vụ: Đảm bảo rằng tất cả các quy trình tính lương được thực hiện chính xác.
+      - Dữ liệu: Quản lý hiệu quả thông tin về nhân viên, thời gian làm việc và lương.
 
-  3) Tiền hành **phân tích 02 ca sử dụng**: *Select Payment và Maintain Timecard*:
+    d) **Biểu đồ**:
 
-      3.1 **Select Payment**:
-      
-      a) Phân tích các lớp:
-      - SinhVien: Đại diện cho sinh viên chưa các thông tin cá nhân và khóa học đã đăng ký.
-      - ThanhToan: Chịu trách nhiệm xử lý các yêu cầu thanh toán.
-      - HoaDon: Quán lý hóa đơn và thanh toán.
+   ![Diagram](https://www.planttext.com/api/plantuml/png/UhzxlqDnIM9HIMbk3bT1Od9sOdggWb90OcLHVawEGd1bSKbghf92DPS244G75AKMf-QL99PavkSf-2HMfXR5AjZOA6W4w2YxkJa2WQQ2dHr4gLDfSMPUQd6nWaz-UcOoic8d7ML7Hv1oX6ANn994P2Kk82KWHN0bkEtNrRN3OHi-Xu1r8LdBLSlba9gN0Wm400000F__0m00)
+     
+     
+2) Phân tích cơ chế:
+
+  a) **Đề xuất**:
+  - Quản lý nhân viên.
+  - Tính lương.
+  - Quản lý thời gian làm việc.
+  - Báo cáo.
+
+  b)  **Lý do**:
+  - Quản lý nhân viên: Quản lý thông tin nhân viên(User) là rất quan trọng trong bất kỳ hệ thống tính nào. Đối với hệ thống Payroll này đảm bảo rằng tất cả thông tin đều được lưu trữ và cập nhật chính xác.
+  - Tính lương: Chức năng cốt lõi của hệ thống Payroll.
+  - Quản lý thời gian làm việc: Chức năng này cần phải có vì chức năng Tính lương phụ thuộc vào chức năng này.
+  - Báo cáo: Cơ chế tạo báo cáo là cần thiết để cung cấp thông tin tổng hợp về lương, thời gian làm việc,... Các báo cáo này có thể hỗ trợ trong việc ra quyết định, lập kế hoạch, đánh giá.
+
+  3) Phân tích ca sử dụng *Select Payment*:
+
+     a) Xác định các lớp phân tích:
+     - Employee: Đại diện cho nhân viên.
+     - Payroll: Chịu trách nhiệm tính toán và xử lý lương.
+     - Payment: Quản lý thông tin thanh toán.
       
       b) Biểu đồ:
      
-     ![Diagram](https://www.planttext.com/api/plantuml/png/UhzxlqDnIM9HIMbk3bTYSab-aK9mPbv6M6Pg7bS1K3WpERCWCQz4GSdbuUxkv0o5ieUxbog4P2JcPIY4v1zUcAUaa5Yi491OcPkQLnASMbIMcPoAgi_ZuUvsXPACXxidvgKhU1pUdAXmPC8ng3wdp9oSpBpquChYajHSBYwOnGgwTcX6MYb47bvLgf3ySDVoKeMImpih5PA19lRc0Gq6kQG4v18kL2qWGr3CjrBmURXhQILExIYAiJaXfEZXhiMW06WamGamFrafU6G-tDsS1mwARfm6EAJcfG1Z0W000F__0m00)
+     ![Diagram](https://www.planttext.com/api/plantuml/png/R90n3i8m34NtdC8Z3Br01jG1TXOEOAKMgkGanN66d8s18t454YaLL7InRF-d_sM_dwynAOfcpmQTHe5R8Z6jm722AnQ9p1Q47fcIrjbJqCFHTAL15xzmB4GMxgJhS2R5cLCbrmqCMqFD4hxKZryFiU2GNMPKsiIsRi-hIpkMbMq7MPZcj32MFtAaCDKFV0000F__0m00)
 
      c) Nhiệm vụ:
-     - Sinh viên: Gửi yêu cầu chọn phương thức thanh toán.
-     - Dịch vụ Thanh Toán: Xử lý và trả về các tùy chọn thanh toán.
-     - Hệ thống Hóa Đơn: Cung cấp các thông tin thanh toán cần thiết.
+     - Employee: Cung cấp thông tin chi tiết về nhân viên.
+     - Payroll: Tính toán lương và xử lý thông tin thanh toán.
+     - Payment: Lưu trữ và quản lý thông tin thanh toán.
 
      d) Thuộc tính và quan hệ:
      
-     **SinhVien**:
-       - Thuộc tính: studentID, name, registeredCourses.
-       - Quan hệ: Một SinhVien có thể có nhiều HoaDon (1:N với HoaDon).
+     **Employee**:
+       - Thuộc tính: employeeId, name, salary.
+       - Quan hệ: Employee - Payroll(1-N).
 
-     **ThanhToan**:
-       - Thuộc tính: paymentMethods, processPayment().
-       - Quan hệ:ThanhToan tương tác với HoaDon để lấy thông tin thanh toán (N:1).
+     **Payroll**:
+       - Thuộc tính: payrollId, date.
+       - Quan hệ: Payroll - Payment(1-N).
 
-     **HoaDon**:
-       - Thuộc tính: billID, amount, dueDate.
-       - Quan hệ:
-         + Một HoaDon thuộc về một SinhVien (N:1).
-         + HoaDon cung cấp thông tin cho ThanhToan (1:N).
-                 
- 
-     3.2) **Maintain Timecard**:
-     
-     a) Phân tích các lớp:
-       - GV: Đại diện cho giảng viên, có thông tin cá nhân và khóa học giảng dạy.
-       - Time: Chịu trách nhiệm quản lý và duy trì thẻ thời gian.
-       - Data: Lưu trữ thông tin thẻ thời gian.
+     **Payment**:
+       - Thuộc tính: paymentId, amount.
+       - Quan hệ: Employee - Payment(1-N).
 
+  4) Phân tích ca sử dụng *Maintain Timecard*:
+
+     a) Xác định các lớp phân tích:
+     - Timecard: Quản lý thông tin thời gian làm việc.
+     - Employee: Đại diện cho nhân viên.
+     - Payroll: Cập nhật thông tin thời gian vào hệ thống.
+    
      b) Biểu đồ:
      
-       ![Diagram](https://www.planttext.com/api/plantuml/png/V90n2i8m58RtdEB7tGjq4C621r14nsSCRK1ZQLEluE0PH3k881GN9pCu1Bn7Jk0LJ2iA5d5vG_A-__zu3tFhPffIdI_cZBXUfkXBKj582iKI_owvJ4Xfj49dDZp6ofa3Xh6xccgQhQptMw0CGxaGdDBPGAGhoSKtthiNo9pPmUUSCPVEhFEQ2adJb3B1sASOxKupBC34dd9mTptMiqoWl4IfeMiN_NA9V0Hhe5NQkoH0xp_xNlofCBO5Vw4_Ipx-WJ-DlQW8KriicxPshsBmwfjrXPhvkpy1003__mC0)
+       ![Diagram](https://www.planttext.com/api/plantuml/png/N8-z3G8n34RxJE4IYbiW1Je9w2bW02inA5B-vFYAcus2aLY1HBe8GcDzd_NqBB-Vhxa8iYp1ApII66w5MBK1qm6kBf11jXgMR56ezzrUzTYmSyW-hKGQ7YIzd4ZG-LBHle5fK3B9ml6B_Helk7Bolj_TQeMszASoATuT1nINuc2gLFj5WtKbUroF8pXJjFNr3m000F__0m00)
 
      c) Nhiệm vụ:
-       - GV: Gửi yêu cầu cập nhật thẻ thời gian.
-       - Time: Xử lý yêu cầu và cập nhật thông tin.
-       - Data: Lưu trữ và quản lý thông tin thẻ thời gian.
+       - Timecard: Cập nhật và quản lý thông tin thời gian làm việc.
+       - Employee: Cung cấp thông tin nhân viên.
+       - Payroll: Đảm bảo rằng thông tin thời gian được cập nhật đúng cách.
 
      d) Thuộc tính và quan hệ:
      
-     **GV**:
+     **Timecard**:
        - Thuộc tính: professorID, name, coursesTaught.
        - Quan hệ: Một GV có thể có nhiều Time (1:N với Time).
 
-     **Time**:
+     **Employee**:
        - Thuộc tính: timecardID, updateTimecard().
        - Quan hệ: Time tương tác với Data để cập nhật thông tin (N:1).
 
