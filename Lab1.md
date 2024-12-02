@@ -64,15 +64,21 @@ Phân tích ca sử dụng hệ thống "**Payroll System**".
      
      **Employee**:
        - Thuộc tính: employeeId, name, salary.
-       - Quan hệ: Employee - Payroll(1-N).
+       - Quan hệ:
+            + Employee - Payroll(1-1).
+            + Employee - Payment(1-N).
 
      **Payroll**:
        - Thuộc tính: payrollId, date.
-       - Quan hệ: Payroll - Payment(1-N).
+       - Quan hệ:
+            + Payroll - Employee(1-N)
+            + Payroll - Payment(1-N).
 
      **Payment**:
        - Thuộc tính: paymentId, amount.
-       - Quan hệ: Employee - Payment(1-N).
+       - Quan hệ:
+            + Payment - Employee(1-N)
+            + Payment - Payroll(1-1)
 
   4) Phân tích ca sử dụng *Maintain Timecard*:
 
@@ -93,18 +99,22 @@ Phân tích ca sử dụng hệ thống "**Payroll System**".
      d) Thuộc tính và quan hệ:
      
      **Timecard**:
-       - Thuộc tính: professorID, name, coursesTaught.
-       - Quan hệ: Một GV có thể có nhiều Time (1:N với Time).
+       - Thuộc tính: timecardId, hoursWorked.
+       - Quan hệ:
+            + Timecard - Employee(1-1)
+            + Timecard - Payroll(1-1)
 
      **Employee**:
-       - Thuộc tính: timecardID, updateTimecard().
-       - Quan hệ: Time tương tác với Data để cập nhật thông tin (N:1).
-
-     **Data**:
-       - Thuộc tính: recordID, timecardData.
+       - Thuộc tính: employeeId, name.
        - Quan hệ:
-         + Một bản ghi trong Data thuộc vềTime (1:1).
-         + Data cung cấp thông tin cho Time (1:N).
+            + Employee - 
+            + Employee -
+
+     **Payroll**:
+       - Thuộc tính: payrollId, date.
+       - Quan hệ:
+         + Payroll -
+         + Payroll - 
 
 
 
