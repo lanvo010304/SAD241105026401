@@ -107,14 +107,14 @@ Phân tích ca sử dụng hệ thống "**Payroll System**".
      **Employee**:
        - Thuộc tính: employeeId, name.
        - Quan hệ:
-            + Employee - 
-            + Employee -
+            + Employee - Timecard(1-1)
+            + Employee - Payroll(1-1)
 
      **Payroll**:
        - Thuộc tính: payrollId, date.
        - Quan hệ:
-         + Payroll -
-         + Payroll - 
+         + Payroll - Timecard(1-N)
+         + Payroll - Employee(1-N)
 
 
 
