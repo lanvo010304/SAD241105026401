@@ -47,9 +47,9 @@ Phân tích ca sử dụng hệ thống "**Payroll System**".
   3) Phân tích ca sử dụng *Select Payment*:
 
      a) Xác định các lớp phân tích:
-     - Employee: Đại diện cho nhân viên.
-     - Payroll: Chịu trách nhiệm tính toán và xử lý lương.
-     - Payment: Quản lý thông tin thanh toán.
+     - Employee.
+     - Payroll.
+     - Payment.
       
       b) Biểu đồ:
      
@@ -75,9 +75,9 @@ Phân tích ca sử dụng hệ thống "**Payroll System**".
   4) Phân tích ca sử dụng *Maintain Timecard*:
 
      a) Xác định các lớp phân tích:
-     - Timecard: Quản lý thông tin thời gian làm việc.
-     - Employee: Đại diện cho nhân viên.
-     - Payroll: Cập nhật thông tin thời gian vào hệ thống.
+     - Timecard.
+     - Employee.
+     - Payroll.
     
      b) Biểu đồ:
      
