@@ -62,24 +62,16 @@ Phân tích ca sử dụng hệ thống "**Payroll System**".
 
      d) Thuộc tính và quan hệ:
      
-     **Employee**:
-       - Thuộc tính: employeeId, name, salary.
-       - Quan hệ:
-            + Employee - Payroll(1-1).
-            + Employee - Payment(1-N).
+     **Thuộc tính**:
+       - Employee: employeeId, name, salary.
+       - Payroll: payrollId, date.
+       - Payment: paymentId, amount.
 
-     **Payroll**:
-       - Thuộc tính: payrollId, date.
-       - Quan hệ:
-            + Payroll - Employee(1-N)
-            + Payroll - Payment(1-N).
-
-     **Payment**:
-       - Thuộc tính: paymentId, amount.
-       - Quan hệ:
-            + Payment - Employee(1-N)
-            + Payment - Payroll(1-1)
-
+     **Quan hệ**:
+       - Employee - Payroll(1-1).
+       - Employee - Payment(1-N).
+       - Payroll - Payment(1-N).
+       
   4) Phân tích ca sử dụng *Maintain Timecard*:
 
      a) Xác định các lớp phân tích:
@@ -98,23 +90,15 @@ Phân tích ca sử dụng hệ thống "**Payroll System**".
 
      d) Thuộc tính và quan hệ:
      
-     **Timecard**:
-       - Thuộc tính: timecardId, hoursWorked.
-       - Quan hệ:
-            + Timecard - Employee(1-1)
-            + Timecard - Payroll(1-1)
+     **Thuộc tính**:
+       - Timecard: timecardId, hoursWorked.
+       - Employee: employeeId, name.
+       - Payroll: payrollId, date.
 
-     **Employee**:
-       - Thuộc tính: employeeId, name.
-       - Quan hệ:
-            + Employee - Timecard(1-1)
-            + Employee - Payroll(1-1)
-
-     **Payroll**:
-       - Thuộc tính: payrollId, date.
-       - Quan hệ:
-         + Payroll - Timecard(1-N)
-         + Payroll - Employee(1-N)
+     **Quan hệ**:
+       - Timecard - Employee(1-1)
+       - Timecard - Payroll(1-1)
+       - Employee - Payroll(1-1)
 
 
 
