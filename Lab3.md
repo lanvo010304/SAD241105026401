@@ -53,6 +53,7 @@ Xác định các phần tử thiết kế của hệ thống "*Payroll System*"
   - Lớp phân tích	| Phần tử thiết kế
   - PayrollAdministrator | PayrollAdministrator
   - Employee | Employee
+  - PaymentManage | PaymentManage
   - Timecard	| Timecard
   - PurchaseOrder	| PurchaseOrder
   - Report	| Report
@@ -71,6 +72,7 @@ Xác định các phần tử thiết kế của hệ thống "*Payroll System*"
   - Gói | Phần tử thiết kế
   - com.payroll.admin	| PayrollAdministrator
   - com.payroll.employee	| Employee
+  - com.payroll.payment | PaymentManager
   - com.payroll.timecard	| Timecard
   - com.payroll.purchaseorder	| PurchaseOrder
   - com.payroll.report	| Report
