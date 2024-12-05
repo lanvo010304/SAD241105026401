@@ -105,22 +105,67 @@ Tiếp tục phân tích ca sử dụng hệ thống "**Payroll System**" và co
   d) Thuộc tính và quan hệ:
 
    *Thuộc tính*:
-   - PayrollAdministrator: name (Tên) ,employee_id (Mã nhân viên).
-   - Employee: employeeId, name, salary.
-   - EmployeeService: serviceId.
+   - PayrollAdministrator: name (Tên) ,employeeId (Mã nhân viên).
+   - Employee: employeeId (Mã nhân viên), name (Tên), address (Địa chỉ), phone(Số điện thoại), salary (Lương), paymentMethod (Phương thức thanh toán), bankAccount (Thông tin tài khoản ngân hàng)
+   - EmployeeManager: employees (Danh sách nhân viên)
 
    *Quan hệ*:
-   - EmployeeService - Employee(1-1)
+   - EmployeeManager 1-N PayrollAdministrator: Một chức năng quản lý nhân viên có thể phục vụ nhiều quản trị viên.
+   - EmployeeManager 1-N Employee: Một chức năng quản lý nhân viên có thể quản lý nhiều nhân viên.
 
   **Ca sử dụng: Maintain Purchase Order**:
 
   a) Các lớp phân tích:
-  - OrderService.
-  - PurchaseOrder.
+  - OrderEmployee: Lớp đại diện cho nhân viên bán hàng, chứa thông tin về nhân viên bán hàng và các phương thức xử lý các yêu cầu của nhân viên bán hàng về quản lý đơn hàng.
+  - PurchaseOrder: Lớp đại diện cho đơn hàng, chứa thông tin về đơn hàng.
+  - OrderManager: Lớp đại diện cho chức năng quản lý đơn hàng, chứa các phương thức xử lý các yêu cầu về quản lý thông tin đơn hàng.
 
   b) Biểu đồ:
 
-  ![Diagram](
-**2) Code mô phỏng ca Maintain Timecard(Java)**:
+  ![Diagram](https://www.planttext.com/api/plantuml/png/UhzxlqDnIM9HIMbk3bTYSab-aO9_KKfgaMjkGKv-PMegLm5GBZCvio0nhmGYuvkObvYUMeGY4L1Qb9oHM9mALi35XMA2WguTYaOh1VU7kzTcAbGUNbMgaFnmr_9IXSBIXxiMvoda7DwhS6JYiOLv2Xc75-IbSo7h0fc2OekLWdDfNZh8WAK52YKPXxS0EIMPUIW6e6Z0T4V4uON92daP3tUjpSDb0heJK7o6QWB2FmG382JZyAfSKhmAqK0LNnAm68y7CJI3H1RaPIWaWvn5qDF1m5XF9CNJ40sKUxgOeCLuF8sXcJHFHnpUJ9AVmUefzt858Mln-1XTBwg77LBpKe151G000F__0m00)
+
+  c) Nhiệm vụ:
+  - OrderEmployee: Gửi yêu cầu quản lý đơn hàng, cung cấp thông tin đơn hàng, xác nhận thêm, sửa, xóa đơn hàng.
+  - PurchaseOrder: Thêm, sửa, xóa thông tin đơn hàng.
+  - OrderManager: Xử lý yêu cầu của nhân viên bán hàng, thêm, sửa, xóa thông tin đơn hàng.
+
+  d) Thuộc tính và quan hệ:
+
+   *Thuộc tính*:
+   - OrderEmployee: name (Tên) ,employeeId (Mã nhân viên).
+   - PurchaseOrder: purchaseOrderId (Mã đơn hàng), customerName (Tên khách hàng), productName (Tên sản phẩm), quantity (Số lượng), date (Ngày).
+   - OrderManager: purchaseOrders (Danh sách đơn hàng).
+
+   *Quan hệ*:
+   - OrderManager 1-N CommissionedEmployee: Một chức năng quản lý đơn hàng có thể phục vụ nhiều nhân viên bán hàng.
+   - OrderManager 1-N PurchaseOrder: Một chức năng quản lý đơn hàng có thể quản lý nhiều đơn hàng.
+
+ **Ca sử dụng: Run Payroll**:
+
+  a) Các lớp phân tích:
+  - PayrollProcessor: Lớp đại diện cho chức năng xử lý lương, chứa các phương thức xử lý các yêu cầu về chạy lương.
+  - BankSystem: Lớp đại diện cho hệ thống ngân hàng, chứa các phương thức xử lý các giao dịch chuyển khoản ngân hàng.
+  - PaymentManager: Lớp đại diện cho chức năng quản lý thanh toán, chứa các phương thức xử lý các yêu cầu về thanh toán lương cho nhân viên.
+
+  b) Biểu đồ:
+
+  ![Diagram](https://www.planttext.com/api/plantuml/png/Z98zJiD048Lxds8km0LIf0W5GW8f4XIqc_KgQyMP3VOwaciA2YfkW44e8YWYL4ZU8iMYt6DFm1KOvzUs78WhUzVptZVpviSikYoDL1Xs8yL57AlefDsk7xMWu_8F3T-FBfyamANBinJ2vNoPOTzZN0TZfWNKoxoZf2zS_fg2pr12R3Ck0QLzHXW7Teh0oH11o-9MAvlXSPhNThOjs68IjGBjp3kzbXmEw0q5wak6h2z8xOQmYjxD0ucEv4PFIsVUU9cDQCs4DPcKHrIIzbYeeVk7O6YVY3j9dRb364ZbyXVqW9wg3Z5t60wkqbYBOGlEd9a5aDffiffVqYonOzgNhixtduT6WPJ_3A4VC0K-JOKoQtJmHPE726FnRzCRYsrsEdBca_uANBuOGM7nnU4sOT1RpXEA9d3c_i1WwXsS8qLOw2Ix1HReUoNMMaP7BTmfuOxMrBgWpTUzsIoeBWZjO7algguLpLy0003__mC0)
+
+  c) Nhiệm vụ:
+  - PayrollProcessor: Chạy lương, tính toán lương, xác định phương thức thanh toán.
+  - BankSystem: Xử lý yêu cầu chuyển khoản, xác nhận giao dịch chuyển khoản.
+  - PaymentManager: Quản lý thanh toán, xác định phương thức thanh toán, xử lý thanh toán theo từng phương thức.
+
+  d) Thuộc tính và quan hệ:
+
+   *Thuộc tính*:
+   - BankSystem: bankAccount (Thông tin tài khoản ngân hàng), processingMethodS (Các phương thức xử lý giao dịch chuyển khoản).
+   - PaymentManager: paymentMethods (Danh sách phương thức thanh toán).
+
+   *Quan hệ*:
+   - PayrollProcessor 1-1 PaymentManager: Một chức năng xử lý lương cần kết nối với một chức năng quản lý thanh toán.
+   - PaymentManager 1-1 BankSystem: Một chức năng quản lý thanh toán có thể kết nối với một hệ thống ngân hàng.
+  
+  **Code mô phỏng ca Maintain Timecard(Java)**:
 
   
