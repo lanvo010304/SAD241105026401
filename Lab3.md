@@ -10,15 +10,15 @@ Xác định các phần tử thiết kế của hệ thống "*Payroll System*"
   
   **BankSystem**:
    
-   ![Diagram](https://www.planttext.com/api/plantuml/png/V90zZi8m48Lxd-A9QbU22r2WY8eA8T7GMevbMuHnH2O5DGK5LSG5zgVO2j7ZOejm4P-0As0YaAXePaRpllT6cclupogMQwvNXM37XSROnR2jSMbYE81C32UeUFubcrhuax0nxC2fDcIWF64iQJdVLAnNGfGfoYbNIcBq9g_aJ6xMlYXwaDLpVaDFJVj3iEqNcSvnlo74muV1g5jWY5oNldBy8PEah5RBFXonlwkVecCI-xGDiMY_5SZ6yv5WdFJ8OzWhAp9DUVh03G00__y30000)
+   ![Diagram](https://www.planttext.com/api/plantuml/png/UhzxVtH0OcLHVawEGd1bSKbgRgo2hgwTGhHJObusL80BGuMU7geA1Ii5zyp4V8MKXxkxapCKaZDAAn_kRivJoCx8VxXhSHu0003__mC0)
 
    **PrintService**:
 
-   ![Diagram](https://www.planttext.com/api/plantuml/png/P90n2i9044NxdE9ZxmLIYAY5TW4hosKDoS8wXhWhM5jOM8ad40a16wspHGh5Uym9l889HZ3Op0pC-_DdvkNA_ig8rDY5zemoEiH0iTjQF0xiZg28tHMIYpF5LNAvGCnk1rF50qMGIqAGAZBJC5qh6NfUKWrJKYM233hZNpOGctIfTGTYzQtRz8ZTNiPOiyim8N2HqGTk6JHIT7kj1dpCxXTRxvfRA48IAovA2_syFKyKUIsu5ZTpV0njVKbbb_o9-Y7DwzUy0G00__y30000)
+   ![Diagram](https://www.planttext.com/api/plantuml/png/UhzxVtH0OcLHVawEGd1bSKbgRgo2hgwTGdH0KMPUIN1gKLbcScei5uOQFJrqDGfM2fvv2WKPcGztxIzLo3csuTZ2l7G00000__y30000)
 
    **ProjectManagementDatabase**:
 
-   ![Diagram](https://www.planttext.com/api/plantuml/png/L90nRW8n44Lxd-ABFXUWY11iGHE9I5nWibYBaPbTxOuBwXJKA0U8K1IbYY8aAYn4iL7kuHFa2h4326WyjlN_dpVpwm-zHgWMDxTAZ5YDlWd-sU5x5VmBk0Z-2tdOlV4q5lz1c0Q_XCHpnGNoaZ6govdEvO6O2ZtNB1a9FL6ZbQfYiibDHIpe3A-D8rhKfRKTK7E-twe7FsiqmRzYaWXiX5ewFBf40jlkaGM_GRlcOy8H8UihTGh3tVtb5rsCQxT8StnMru7g8adwaxMBWKkpXTrx5O7RRNo8uMJyRwbwcYTfONy0003__mC0)
+   ![Diagram](https://www.planttext.com/api/plantuml/png/UhzxVtH0OcLHVawEGd1bSKbgRgo2hgwTGdH0KNvMQdA9Rs9UOdfgRcfUYKjYIM9IOd5gB1U61Zqzl1eKh1H2Yaeh5SeUxbgQfr2ISNXBNhf2IMQUGih3tHiL3Y_C0m000F__0m00)
 
 1.2. Mô tả, giải thích:
 
