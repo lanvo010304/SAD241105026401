@@ -104,6 +104,15 @@ Tiếp tục phân tích ca sử dụng hệ thống "**Payroll System**" và co
    *Quan hệ*:
    - EmployeeService - Employee(1-1)
 
+  **Ca sử dụng: Maintain Purchase Order**:
+
+  a) Các lớp phân tích:
+  - OrderService.
+  - PurchaseOrder.
+
+  b) Biểu đồ:
+
+  ![Diagram](
 **2) Code mô phỏng ca Maintain Timecard(Java)**:
 
   
